@@ -17,7 +17,7 @@ $ < input_file command1 | command2 > output file
 Finished 12/06/2023. Grade: 100/100
 
 ## Usage
-To compile, use ```make```, ```make all```.
+To compile, use ```make``` or ```make all```.
 
 ### Checking memory leaks
 In order to check for memory leaks properly on MacOS, some adjustments need to be made to the code. First, we need to redirect stdout to its usual fd, since it is used in a pipe for this project. For this purpose, add the following line at the end of the main() function :
