@@ -19,6 +19,7 @@
 # include <fcntl.h>
 # include <stdio.h>
 # include <errno.h>
+# include <sys/wait.h>
 # include "libft/libft.h"
 
 # define READ 0
