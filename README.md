@@ -14,7 +14,7 @@ $ < input_file command1 | command2 > output file
 In a traditional Unix shell like Bash :
 - ```< input_file``` redirects the standard input (fd=0) of a command to read from input_file instead of the terminal.
 - ```|``` (pipe) sends the output of ```command1``` as input to ```command2```.
-- ```> output_file``` redirects the standard output (fd=1) of a command to output_file`, overwriting it if it exists.
+- ```> output_file``` redirects the standard output (fd=1) of a command to output_file, overwriting it if it exists.
 
 ---
 
