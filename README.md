@@ -16,8 +16,6 @@ In a traditional Unix shell like Bash :
 - ```|``` (pipe) sends the output of ```command1``` as input to ```command2```.
 - ```> output_file``` redirects the standard output (fd=1) of a command to output_file`, overwriting it if it exists.
 
----
-
 ## Status
 ✅ Completed on: 12/06/2023
 🏆 Grade: 100/100
