@@ -4,20 +4,23 @@
   <img src="https://github.com/ArenKae/ArenKae/blob/main/42%20badges/pipexe.png" alt="Pipex 42 project badge"/>
 </p>
 
-Pipex is a unix project aimed at better understanding shell redirections and processes in C. We will learn more about pipe(), fork(), dup2() and execve(), all very important functions for the infamous [minishell](https://github.com/ArenKae/minishell) !
+Pipex is a Unix project designed to deepen the understanding of shell redirections and process management in C. Through this project, we will learn more about ```pipe()```, ```fork()```, ```dup2()``` and ```execve()```, all of which are very important functions for the infamous [minishell](https://github.com/ArenKae/minishell) !
 
 The pipex program takes an input file, performs a command on it, pipes the result to another command which then writes its result to an output file. The result is virtually identical to this kind of shell command :
 ```bash
 $ < input_file command1 | command2 > output file
 ```
-> **_NOTE:_** In a traditional shell like Bash :
-> - the ```<``` operator redirects input. ```fd < target``` means that the target will read inputs from the file descriptor fd, or from the standard input (fd=0) if fd is not specified.
-> - the ```>``` operator redirects output. ```fd > target``` results in the target file to become open for writing from the file descriptor fd, or the standard output (fd=1) if fd is not specified.
+### Shell Redirection Explanation:
+In a traditional Unix shell like Bash :
+- ```< input_file``` redirects the standard input (fd=0) of a command to read from input_file instead of the terminal.
+- ```|``` (pipe) sends the output of ```command1``` as input to ```command2```.
+- ```> output_file``` redirects the standard output (fd=1) of a command to output_file`, overwriting it if it exists.
 
 ---
 
 ## Status
-Finished 12/06/2023. Grade: 100/100
+✅ Completed on: 12/06/2023
+🏆 Grade: 100/100
 
 ## Usage
 - Clone this repository and ```cd``` into it. Use ```make``` to compile, then launch the program with :
@@ -25,9 +28,7 @@ Finished 12/06/2023. Grade: 100/100
 ./pipex <input_file> <command1> <command2> <output_file>
 ```
 
-- The output will be written to the specified output file. If the output file exists, it will be overwritten.
-
-- Each command can be given arguments and options if surrounded by quotation marks. For example:
+- Each command can take arguments and options when enclosed in quotation marks. For example:
 ```bash
 ./pipex example.txt "cat" "grep x" outfile.txt
 ```
