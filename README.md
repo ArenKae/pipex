@@ -10,6 +10,9 @@ The pipex program takes an input file, performs a command on it, pipes the resul
 ```bash
 $ < input_file command1 | command2 > output file
 ```
+> **_NOTE:_** In a traditional shell like Bash :
+> - the ```<``` operator redirects input. ```fd < target``` means that the target will read inputs from the file descriptor fd, or from the standard input (fd=0) if fd is not specified.
+> - the ```>``` operator redirects output. ```fd > target``` results in the target file to become open for writing from the file descriptor fd, or the standard output (fd=1) if fd is not specified.
 
 ---
 
