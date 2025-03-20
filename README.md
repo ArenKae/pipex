@@ -18,13 +18,13 @@ Finished 12/06/2023. Grade: 100/100
 
 ## Usage
 - Clone this repository and ```cd``` into it. Use ```make``` to compile, then launch the program with :
-```
+```bash
 ./pipex <input_file> <command1> <command2> <output_file>
 ```
 
 - The output will be written to the specified output file. If the output file exists, it will be overwritten.
 
 - Each command can be given arguments and options if surrounded by quotation marks. For example:
-```
-$ ./pipex example.txt "cat" "grep x" outfile.txt
+```bash
+./pipex example.txt "cat" "grep x" outfile.txt
 ```
