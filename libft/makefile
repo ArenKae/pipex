@@ -25,6 +25,7 @@ SRC =	ft_strlen.c \
 		ft_strdup.c \
 		ft_strjoin.c \
 		ft_strlcpy.c \
+		ft_putstr_fd.c
 
 # Object files :
 OBJ = $(addprefix $(OBJ_DIR), $(SRC:.c=.o))

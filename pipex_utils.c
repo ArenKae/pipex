@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acosi <acosi@student.42nice.fr>            +#+  +:+       +#+        */
+/*   By: acosi <acosi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 12:24:23 by acosi             #+#    #+#             */
-/*   Updated: 2023/06/12 14:14:05 by acosi            ###   ########.fr       */
+/*   Updated: 2025/03/20 19:33:25 by acosi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,27 @@
 		status = 1 -> an error occured
 */
 
-void	exit_error(char *msg, int status)
+void	exit_error(char *msg, int status, int custom)
 {
 	if (msg == NULL)
 		exit(status);
-	perror(msg);
+	if (custom == 1)
+	{
+		ft_putstr_fd(RED "Error: " RESET, 2);
+		ft_putstr_fd(msg, 2);
+		ft_putstr_fd(YELLOW "Usage: " RESET, 2);
+		ft_putstr_fd("./pipex <" BLUE, 2);
+		ft_putstr_fd("input_file" RESET, 2);
+		ft_putstr_fd("> <" BLUE, 2);
+		ft_putstr_fd("command1" RESET, 2);
+		ft_putstr_fd("> <" BLUE, 2);
+		ft_putstr_fd("command2" RESET, 2);
+		ft_putstr_fd("> <" BLUE, 2);
+		ft_putstr_fd("output_file" RESET, 2);
+		ft_putstr_fd(">\n", 2);
+	}
+	else
+		perror(msg);
 	exit(status);
 }
 
@@ -44,13 +60,13 @@ int	open_file(const char *file, int i_o)
 	{
 		fd = open(file, O_RDONLY);
 		if (fd == -1)
-			exit_error("open", EXIT_FAILURE);
+			exit_error("open", EXIT_FAILURE, 0);
 	}
 	else if (i_o == OUTPUT)
 	{
 		fd = open(file, O_WRONLY | O_CREAT | O_TRUNC, 0644);
 		if (fd == -1)
-			exit_error("open", EXIT_FAILURE);
+			exit_error("open", EXIT_FAILURE, 0);
 	}
 	return (fd);
 }
@@ -66,12 +82,12 @@ void	redirect_fd(int fd, int i_o)
 	if (i_o == STDIN)
 	{
 		if (dup2(fd, STDIN_FILENO) == -1)
-			exit_error("dup2", EXIT_FAILURE);
+			exit_error("dup2", EXIT_FAILURE, 0);
 	}
 	else if (i_o == STDOUT)
 	{
 		if (dup2(fd, STDOUT_FILENO) == -1)
-			exit_error("dup2", EXIT_FAILURE);
+			exit_error("dup2", EXIT_FAILURE, 0);
 	}
 }
 
@@ -80,5 +96,5 @@ void	redirect_fd(int fd, int i_o)
 void	close_fd(int fd1, int fd2)
 {
 	if (close(fd1) == -1 || close(fd2) == -1)
-		exit_error("close", EXIT_FAILURE);
+		exit_error("close", EXIT_FAILURE, 0);
 }

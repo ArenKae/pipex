@@ -16,6 +16,8 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 INCLUDE = pipex.h
 OBJF = .cache_exists
+.DEFAULT_GOAL := all	# make = make all
+update_flag := false
 
 # Directories
 OBJ_DIR = obj/
@@ -43,6 +45,7 @@ $(NAME) : $(OBJ)
 	@$(MAKE) -C ./libft
 	@$(CC) $(CFLAGS) $^ ./libft/libft.a -o $@
 	@echo "$(GREEN)-> pipex compiled!$(DEF_COLOR)"
+	@$(eval update_flag := true)
 
 ### MEMO ###
 # 	Special variables :
@@ -54,7 +57,12 @@ $(NAME) : $(OBJ)
 
 ### RULES ###
 
-all : $(NAME)
+nothing_to_be_done:
+	@if [ "$(update_flag)" = "false" ]; then \
+		echo "$(GREEN)>>> make: Nothing to be done for 'all'.$(DEF_COLOR)"; \
+	fi
+
+all : $(NAME) nothing_to_be_done
 
 clean :
 	@$(MAKE) -C ./libft fclean
@@ -66,7 +74,7 @@ fclean : clean
 	@rm -rf $(NAME)
 	@echo "$(BLUE)pipex executable file cleaned!$(DEF_COLOR)"
 
-re :	fclean all
+re : fclean all
 	@echo "$(CYAN)Cleaned and rebuilt everything for pipex!$(DEF_COLOR)"
 
 .PHONY: all clean fclean re

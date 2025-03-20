@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acosi <acosi@student.42nice.fr>            +#+  +:+       +#+        */
+/*   By: acosi <acosi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 12:06:37 by acosi             #+#    #+#             */
-/*   Updated: 2023/06/12 15:29:18 by acosi            ###   ########.fr       */
+/*   Updated: 2025/03/20 19:38:47 by acosi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,10 +64,10 @@ void	pipex(int fd1, int fd2, char **cmd, char **env)
 	pid_t	pid;
 
 	if (pipe(pipefd) == -1)
-		exit_error("pipe", EXIT_FAILURE);
+		exit_error("pipe", EXIT_FAILURE, 0);
 	pid = fork();
 	if (pid == -1)
-		exit_error("fork", EXIT_FAILURE);
+		exit_error("fork", EXIT_FAILURE, 0);
 	if (pid == CHILD)
 	{
 		redirect_fd(fd1, STDIN);
@@ -91,7 +91,7 @@ int	main(int argc, char **argv, char **env)
 	int	fd2;
 
 	if (argc != 5)
-		exit_error("Invalid number of arguments !", EXIT_FAILURE);
+		exit_error("invalid number of arguments\n", EXIT_FAILURE, 1);
 	fd1 = open_file(argv[1], INPUT);
 	fd2 = open_file(argv[4], OUTPUT);
 	pipex(fd1, fd2, argv, env);
