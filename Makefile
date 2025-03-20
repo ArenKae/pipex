@@ -68,3 +68,5 @@ fclean : clean
 
 re :	fclean all
 	@echo "$(CYAN)Cleaned and rebuilt everything for pipex!$(DEF_COLOR)"
+
+.PHONY: all clean fclean re
