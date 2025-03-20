@@ -1,7 +1,7 @@
 # pipex
 
 <p align="center">
-  <img src="https://github.com/ArenKae/42-badges/blob/main/pipexe.png" alt="Pipex 42 project badge"/>
+  <img src="https://github.com/ArenKae/ArenKae/blob/main/42%20badges/pipexe.png" alt="Pipex 42 project badge"/>
 </p>
 
 pipex is a 42 school project aimed to better understand shell redirection and pipes, by handling them in C.
