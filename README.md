@@ -4,10 +4,10 @@
   <img src="https://github.com/ArenKae/ArenKae/blob/main/42%20badges/pipexe.png" alt="Pipex 42 project badge"/>
 </p>
 
-Pipex is a project aimed at better understanding shell redirection and pipes in C.
+Pipex is a unix project aimed at better understanding shell redirections and processes in C. We will learn more about pipe(), fork(), dup2() and execve(), all very important functions for the infamous [minishell](https://github.com/ArenKae/minishell) !
 
-This pipex program takes an input file, performs a command on it, pipes the result to another command which then writes its result to an output file. The result is virtually identical to this kind of shell command:
-```
+The pipex program takes an input file, performs a command on it, pipes the result to another command which then writes its result to an output file. The result is virtually identical to this kind of shell command :
+```bash
 $ < input_file command1 | command2 > output file
 ```
 
@@ -17,27 +17,14 @@ $ < input_file command1 | command2 > output file
 Finished 12/06/2023. Grade: 100/100
 
 ## Usage
-To compile, use ```make``` or ```make all```.
-
-### Checking memory leaks
-In order to check for memory leaks properly on MacOS, some adjustments need to be made to the code. First, we need to redirect stdout to its usual fd, since it is used in a pipe for this project. For this purpose, add the following line at the end of the main() function :
+- Clone this repository and ```cd``` into it. Use ```make``` to compile, then launch the program with :
 ```
-dup2(STDOUT_FILENO, fd2);
-```
-Then we can make a system call to check for leaks as usual :
-```
-system("leaks pipex");
-```
-In the pipex() function, we need to add a second fork in order for the stdout to work properly :
-```
-pid_t pid2;
-
-[...]
-
-pid2 = fork();
-```
-Then, replace the "else" statement with :
-```
-if (pid2 == CHILD)
+./pipex <input_file> <command1> <command2> <output_file>
 ```
 
+- The output will be written to the specified output file. If the output file exists, it will be overwritten.
+
+- Each command can be given arguments and options if surrounded by quotation marks. For example:
+```
+$ ./pipex example.txt "cat" "grep x" outfile.txt
+```
