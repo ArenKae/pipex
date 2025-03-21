@@ -24,12 +24,12 @@ In a traditional Unix shell like Bash :
 🏆 Grade: 100/100
 
 ## Usage
-- Clone this repository and ```cd``` into it. Use ```make``` to compile, then launch the program with :
+Clone this repository and ```cd``` into it. Use ```make``` to compile, then launch the program with :
 ```bash
 ./pipex <input_file> <command1> <command2> <output_file>
 ```
-
-- Each command can take arguments and options when enclosed in quotation marks. For example:
+> [!NOTE]
+> Each command can take arguments and options when enclosed in quotation marks. For example:
 ```bash
 ./pipex example.txt "cat" "grep x" outfile.txt
 ```
