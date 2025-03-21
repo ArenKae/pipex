@@ -30,6 +30,6 @@ Clone this repository and ```cd``` into it. Use ```make``` to compile, then laun
 ```
 > [!NOTE]
 > Each command can take arguments and options when enclosed in quotation marks. For example:
-```bash
-./pipex example.txt "cat" "grep x" outfile.txt
-```
+> ```bash
+> ./pipex example.txt "cat" "grep x" outfile.txt
+> ```
