@@ -29,6 +29,7 @@ Clone this repository and ```cd``` into it. Use ```make``` to compile, then laun
 ./pipex <input_file> <command1> <command2> <output_file>
 ```
 </br>
+
 > [!NOTE]
 > Each command can take arguments and options when enclosed in quotation marks. For example:
 > ```bash
